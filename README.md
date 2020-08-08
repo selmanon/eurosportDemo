@@ -1,1 +1,1 @@
-# eurosportDemo
+# EuroSport mini project
