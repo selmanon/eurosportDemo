@@ -14,7 +14,8 @@ data class StoryEntity(
     val storyTeaser: String,
     val storyImage: String,
     val storyDate: Double,
-    val storySport: String
+    val storySport: String,
+    val  storyAuthor:String
 ) : NewsEntity() {
     override val type: NewsType
         get() = StoryType
@@ -22,7 +23,6 @@ data class StoryEntity(
 
 data class VideoEntity(
     val videoTitle: String,
-    val videoTeaser: String,
     val videoImage: String,
     val videoDate: Double,
     val videoSport: String,
