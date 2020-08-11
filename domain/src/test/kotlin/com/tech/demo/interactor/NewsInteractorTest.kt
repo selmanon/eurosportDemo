@@ -6,7 +6,7 @@ import com.nhaarman.mockito_kotlin.whenever
 import com.tech.demo.domain.StoryDomain
 import com.tech.demo.domain.VideoDomain
 import com.tech.demo.repository.INewsRepository
-import io.reactivex.Observable
+import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -32,7 +32,7 @@ class NewsInteractorTest {
     @Test
     fun getNewsList() {
         val fixtList = listOf(stubStory(), stubVideo())
-        whenever(mockRepository.getNews()).thenReturn(Observable.just(fixtList))
+        whenever(mockRepository.getNews()).thenReturn(Single.just(fixtList))
 
         sut.getNewsList().test().assertValue(fixtList)
         verify(mockRepository).getNews()
