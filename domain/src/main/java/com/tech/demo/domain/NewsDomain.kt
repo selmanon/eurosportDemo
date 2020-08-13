@@ -13,6 +13,7 @@ data class StoryDomain(
     val storyTeaser: String,
     val storyImage: String,
     val storyDate: Double,
+    val storyAuthor: String,
     val storySport: String
 ) : NewsDomain() {
     override val type: NewsType
@@ -21,12 +22,11 @@ data class StoryDomain(
 
 data class VideoDomain(
     val videoTitle: String,
-    val videoTeaser: String,
     val videoImage: String,
     val videoDate: Double,
     val videoSport: String,
-    val videoUrl:String,
-    val videoViews:Long
+    val videoUrl: String,
+    val videoViews: Long
 ) : NewsDomain() {
     override val type: NewsType
         get() = VideoType

@@ -16,4 +16,7 @@ class NewsDataSourceFactory @Inject constructor(
         else
             cacheDataSource
     }
+
+    fun getCacheDataSource() = cacheDataSource
+
 }

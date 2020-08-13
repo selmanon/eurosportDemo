@@ -9,7 +9,6 @@ class VideoDomainMapper @Inject constructor(){
     fun mapFromEntity(entity: VideoEntity) =
         VideoDomain(
             videoTitle = entity.videoTitle,
-            videoTeaser = entity.videoTeaser,
             videoImage = entity.videoImage,
             videoDate = entity.videoDate,
             videoSport = entity.videoSport,

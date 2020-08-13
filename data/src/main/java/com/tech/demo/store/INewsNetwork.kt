@@ -1,9 +1,9 @@
 package com.tech.demo.store
 
 import com.tech.demo.entity.NewsEntity
-import io.reactivex.Single
+import io.reactivex.Observable
 
 interface INewsNetwork {
 
-    fun getFromNetwork(): Single<List<NewsEntity>>
+    fun getFromNetwork(): Observable<List<NewsEntity>>
 }

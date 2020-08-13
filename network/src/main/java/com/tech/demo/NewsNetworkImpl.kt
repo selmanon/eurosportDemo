@@ -5,7 +5,7 @@ import com.tech.demo.mapper.StoryEntityMapper
 import com.tech.demo.mapper.VideoEntityMapper
 import com.tech.demo.service.EuroSportApiService
 import com.tech.demo.store.INewsNetwork
-import io.reactivex.Single
+import io.reactivex.Observable
 import javax.inject.Inject
 
 class NewsNetworkImpl @Inject constructor(
@@ -14,7 +14,7 @@ class NewsNetworkImpl @Inject constructor(
     private val apiService: EuroSportApiService
 ) : INewsNetwork {
 
-    override fun getFromNetwork(): Single<List<NewsEntity>> {
+    override fun getFromNetwork(): Observable<List<NewsEntity>> {
         return apiService.getNewsList().map { response ->
             listOf(response.videos.map {
                 videoMapper.mapFromDto(it)

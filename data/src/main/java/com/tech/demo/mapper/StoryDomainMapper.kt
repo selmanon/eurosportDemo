@@ -12,6 +12,7 @@ class StoryDomainMapper @Inject constructor() {
             storyTeaser = entity.storyTeaser,
             storyImage = entity.storyImage,
             storyDate = entity.storyDate,
+            storyAuthor = entity.storyAuthor,
             storySport = entity.storySport
         )
 }

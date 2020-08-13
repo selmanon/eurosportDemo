@@ -1,6 +1,5 @@
 package com.tech.demo.entity
 
-import com.tech.demo.domain.NewsDomain
 import com.tech.demo.domain.NewsType
 import com.tech.demo.domain.StoryType
 import com.tech.demo.domain.VideoType
@@ -15,7 +14,7 @@ data class StoryEntity(
     val storyImage: String,
     val storyDate: Double,
     val storySport: String,
-    val  storyAuthor:String
+    val storyAuthor:String
 ) : NewsEntity() {
     override val type: NewsType
         get() = StoryType
