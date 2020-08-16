@@ -11,6 +11,7 @@ import com.tech.demo.mapper.StoryDomainMapper
 import com.tech.demo.mapper.VideoDomainMapper
 import com.tech.demo.store.NewsDataSourceFactory
 import com.tech.demo.store.datasource.INewsDataSource
+import io.reactivex.Observable
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
@@ -55,7 +56,7 @@ class NewsRepositoryTest {
 
         whenever(mockFactory.getDataSource(any())).thenReturn(mockNewsDataSource)
         whenever(mockNewsDataSource.getNewsList()).thenReturn(
-            Single.just(
+            Observable.just(
                 listOf(
                     fixtStoryEntity1,
                     fixtVideoEntity,

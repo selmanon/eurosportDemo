@@ -5,9 +5,10 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -15,14 +16,21 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    lateinit var viewModel: NewsViewModel
+    lateinit var viewModel: com.tech.demo.NewsViewModel
+
+    lateinit var list:RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(NewsViewModel::class.java)
+
+        list = findViewById(R.id.newsList)
+        list.layoutManager = LinearLayoutManager(this)
+
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(com.tech.demo.NewsViewModel::class.java)
         viewModel.getNews().observe(this, Observer {
-            Log.d("@@@@ LIST @@@@", it.toString())
+            val adapter = NewsAdapter(it)
+            list.adapter = adapter
         })
     }
 }

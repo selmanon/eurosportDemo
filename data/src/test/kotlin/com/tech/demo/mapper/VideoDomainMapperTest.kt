@@ -27,6 +27,7 @@ class VideoDomainMapperTest {
         assertEquals(fixtEntity.videoDate, domain.videoDate)
         assertEquals(fixtEntity.videoImage, domain.videoImage)
         assertEquals(fixtEntity.videoSport, domain.videoSport)
-        assertEquals(fixtEntity.videoTeaser, domain.videoTeaser)
+        assertEquals(fixtEntity.videoUrl, domain.videoUrl)
+        assertEquals(fixtEntity.videoViews, domain.videoViews)
     }
 }

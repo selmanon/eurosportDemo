@@ -6,6 +6,7 @@ import com.nhaarman.mockito_kotlin.whenever
 import com.tech.demo.entity.StoryEntity
 import com.tech.demo.entity.VideoEntity
 import com.tech.demo.store.INewsNetwork
+import io.reactivex.Observable
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
@@ -30,7 +31,7 @@ class NewsNetworkDataSourceTest {
     @Test
     fun getNewsList() {
         val fixtList = listOf(stubStory(), stubVideo())
-        whenever(mockNetwork.getFromNetwork()).thenReturn(Single.just(fixtList))
+        whenever(mockNetwork.getFromNetwork()).thenReturn(Observable.just(fixtList))
 
         sut.getNewsList().test().assertValue(fixtList)
 
