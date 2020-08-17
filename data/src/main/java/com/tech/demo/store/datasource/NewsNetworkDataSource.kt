@@ -38,12 +38,31 @@ class NewsNetworkDataSource @Inject constructor(
             }
         }
 
-        return Observable.zip(sortedStories, sortedVideos,  BiFunction<List<NewsEntity>, List<NewsEntity>, List<NewsEntity>> { stories, videos ->
-          listOf(stories, videos).flatten()
-        })
+        return Observable.zip(
+            sortedStories,
+            sortedVideos,
+            BiFunction<List<NewsEntity>, List<NewsEntity>, List<NewsEntity>> { stories, videos ->
+                mergeData(stories, videos)
+            })
     }
 
     override fun saveNewsList(list: List<NewsEntity>): Completable {
         throw  UnsupportedOperationException("this operation is not supported here")
+    }
+
+    private fun mergeData(
+        stories: List<NewsEntity>,
+        videos: List<NewsEntity>
+    ): List<NewsEntity> {
+        if (stories.size < videos.size)
+            return mergeData(videos, stories)
+        val list = mutableListOf<NewsEntity>()
+
+        stories.forEachIndexed { index, story ->
+            list.add(story)
+            if (index < videos.size) list.add(videos[index])
+        }
+
+        return list
     }
 }
