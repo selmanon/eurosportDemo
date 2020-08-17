@@ -2,11 +2,6 @@ package com.tech.demo.db
 
 object Constants {
 
-    object Params {
-        const val TABLE_NAME = "params"
-        const val QUERY_PARAMS = "SELECT * FROM $TABLE_NAME"
-    }
-
     object DataBase {
         const val DATABASE_VERSION = 1
     }

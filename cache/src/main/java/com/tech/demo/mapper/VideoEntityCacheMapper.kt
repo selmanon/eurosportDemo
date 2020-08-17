@@ -8,6 +8,7 @@ class VideoEntityCacheMapper @Inject constructor() {
 
     fun mapFromDatabaseEntity(dbEntity: VideoDataBaseEntity) =
         VideoEntity(
+            id = dbEntity.id,
             videoTitle = dbEntity.title,
             videoImage = dbEntity.image,
             videoDate = dbEntity.date,
@@ -19,6 +20,7 @@ class VideoEntityCacheMapper @Inject constructor() {
 
     fun mapToDatabaseEntity(entity: VideoEntity) =
         VideoDataBaseEntity(
+            id = entity.id,
             title = entity.videoTitle,
             image = entity.videoImage,
             date = entity.videoDate,

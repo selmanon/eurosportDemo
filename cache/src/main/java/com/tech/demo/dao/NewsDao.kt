@@ -7,18 +7,18 @@ import androidx.room.Query
 import com.tech.demo.db.Constants
 import com.tech.demo.entity.StoryDataBaseEntity
 import com.tech.demo.entity.VideoDataBaseEntity
-import io.reactivex.Flowable
+import io.reactivex.Single
 
 @Dao
 abstract class NewsDao {
 
     @Query(Constants.Videos.QUERY_VIDEOS)
     @JvmSuppressWildcards
-    abstract fun getVideos(): Flowable<List<VideoDataBaseEntity>>
+    abstract fun getVideos(): Single<List<VideoDataBaseEntity>>
 
     @Query(Constants.Stories.QUERY_STORIES)
     @JvmSuppressWildcards
-    abstract fun getStories(): Flowable<List<StoryDataBaseEntity>>
+    abstract fun getStories(): Single<List<StoryDataBaseEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     @JvmSuppressWildcards

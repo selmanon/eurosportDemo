@@ -3,6 +3,7 @@ package com.tech.demo.dto
 import com.google.gson.annotations.SerializedName
 
 class VideoDTO(
+    @SerializedName("id") var id: Int,
     @SerializedName("title") var videoTitle: String,
     @SerializedName("thumb") var videoImage: String,
     @SerializedName("url") var videoUrl: String,

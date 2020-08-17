@@ -9,21 +9,23 @@ sealed class NewsEntity {
 }
 
 data class StoryEntity(
+    val id: Int,
     val storyTitle: String,
     val storyTeaser: String,
     val storyImage: String,
-    val storyDate: Double,
+    val storyDate: Long,
     val storySport: String,
-    val storyAuthor:String
+    val storyAuthor: String
 ) : NewsEntity() {
     override val type: NewsType
         get() = StoryType
 }
 
 data class VideoEntity(
+    val id: Int,
     val videoTitle: String,
     val videoImage: String,
-    val videoDate: Double,
+    val videoDate: Long,
     val videoSport: String,
     val videoUrl: String,
     val videoViews: Long

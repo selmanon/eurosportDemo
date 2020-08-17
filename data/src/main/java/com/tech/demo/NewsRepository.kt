@@ -8,8 +8,11 @@ import com.tech.demo.entity.VideoEntity
 import com.tech.demo.mapper.StoryDomainMapper
 import com.tech.demo.mapper.VideoDomainMapper
 import com.tech.demo.repository.INewsRepository
+import com.tech.demo.store.INewsCache
 import com.tech.demo.store.NewsDataSourceFactory
+import io.reactivex.Completable
 import io.reactivex.Observable
+import io.reactivex.functions.BiFunction
 import javax.inject.Inject
 
 class NewsRepository @Inject constructor(
@@ -20,8 +23,10 @@ class NewsRepository @Inject constructor(
 
     override fun getNews(): Observable<List<NewsDomain>> {
 
-        return factory.getDataSource(false)
-            .getNewsList()
+        return factory.getDataSource().getNewsList()
+            .flatMap {
+                factory.getCacheDataSource().saveNewsList(it).andThen(Observable.just(it))
+            }
             .map { news ->
                 news.map {
                     when (it.type) {

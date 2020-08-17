@@ -1,5 +1,6 @@
 package com.tech.demo.model
 
+
 sealed class NewsModel {
     abstract val type: NewsType
 }
@@ -7,6 +8,7 @@ sealed class NewsModel {
 sealed class NewsType
 object VideoType : NewsType()
 object StoryType : NewsType()
+
 
 data class StoryModel(
     val storyTitle: String,
@@ -23,7 +25,7 @@ data class StoryModel(
 data class VideoModel(
     val videoTitle: String,
     val videoImage: String,
-    val videoDate: Double,
+    val videoDate: String,
     val videoSport: String,
     val videoUrl: String,
     val videoViews: Long

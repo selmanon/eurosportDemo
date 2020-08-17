@@ -12,7 +12,7 @@ data class StoryDomain(
     val storyTitle: String,
     val storyTeaser: String,
     val storyImage: String,
-    val storyDate: Double,
+    val storyDate: Long,
     val storyAuthor: String,
     val storySport: String
 ) : NewsDomain() {
@@ -23,7 +23,7 @@ data class StoryDomain(
 data class VideoDomain(
     val videoTitle: String,
     val videoImage: String,
-    val videoDate: Double,
+    val videoDate: Long,
     val videoSport: String,
     val videoUrl: String,
     val videoViews: Long

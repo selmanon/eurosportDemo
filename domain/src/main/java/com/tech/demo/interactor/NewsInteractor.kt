@@ -2,6 +2,7 @@ package com.tech.demo.interactor
 
 import com.tech.demo.domain.NewsDomain
 import com.tech.demo.repository.INewsRepository
+import io.reactivex.Completable
 import io.reactivex.Observable
 import javax.inject.Inject
 

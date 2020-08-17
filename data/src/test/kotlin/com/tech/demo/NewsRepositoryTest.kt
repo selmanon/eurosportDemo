@@ -11,8 +11,9 @@ import com.tech.demo.mapper.StoryDomainMapper
 import com.tech.demo.mapper.VideoDomainMapper
 import com.tech.demo.store.NewsDataSourceFactory
 import com.tech.demo.store.datasource.INewsDataSource
+import com.tech.demo.store.datasource.NewsCacheDataSource
+import io.reactivex.Completable
 import io.reactivex.Observable
-import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -31,6 +32,9 @@ class NewsRepositoryTest {
 
     @Mock
     lateinit var mockNewsDataSource:INewsDataSource
+
+    @Mock
+    lateinit var mockCacheDataSource:NewsCacheDataSource
 
     lateinit var sut: NewsRepository
     lateinit var fixture: JFixture
@@ -54,7 +58,8 @@ class NewsRepositoryTest {
         val fixtVideoDomain = stubVideoDomain()
 
 
-        whenever(mockFactory.getDataSource(any())).thenReturn(mockNewsDataSource)
+        whenever(mockFactory.getDataSource()).thenReturn(mockNewsDataSource)
+        whenever(mockFactory.getCacheDataSource()).thenReturn(mockCacheDataSource)
         whenever(mockNewsDataSource.getNewsList()).thenReturn(
             Observable.just(
                 listOf(
@@ -65,6 +70,7 @@ class NewsRepositoryTest {
             )
         )
 
+        whenever(mockCacheDataSource.saveNewsList(any())).thenReturn(Completable.complete())
         whenever(mockStoryDomainMapper.mapFromEntity(fixtStoryEntity1)).thenReturn(fixtStoryDomain1)
         whenever(mockVideoDomainMapper.mapFromEntity(fixtVideoEntity)).thenReturn(fixtVideoDomain)
         whenever(mockStoryDomainMapper.mapFromEntity(fixtStoryEntity2)).thenReturn(fixtStoryDomain2)

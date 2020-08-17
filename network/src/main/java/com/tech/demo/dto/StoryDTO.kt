@@ -3,6 +3,7 @@ package com.tech.demo.dto
 import com.google.gson.annotations.SerializedName
 
 class StoryDTO(
+    @SerializedName("id") var id: Int,
     @SerializedName("title") var storyTitle: String,
     @SerializedName("teaser") val storyTeaser: String,
     @SerializedName("image") val storyImage: String,

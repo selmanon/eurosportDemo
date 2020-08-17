@@ -8,6 +8,7 @@ class StoryEntityCacheMapper @Inject constructor() {
 
     fun mapFromDatabaseEntity(dbEntity: StoryDataBaseEntity) =
         StoryEntity(
+            id = dbEntity.id,
             storyTitle = dbEntity.title,
             storyTeaser = dbEntity.teaser,
             storyImage = dbEntity.image,
@@ -19,6 +20,7 @@ class StoryEntityCacheMapper @Inject constructor() {
 
     fun mapToDatabaseEntity(entity: StoryEntity) =
         StoryDataBaseEntity(
+            id = entity.id,
             title = entity.storyTitle,
             teaser = entity.storyTeaser,
             image = entity.storyImage,

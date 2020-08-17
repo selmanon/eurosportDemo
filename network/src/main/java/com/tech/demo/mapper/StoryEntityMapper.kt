@@ -9,10 +9,11 @@ class StoryEntityMapper @Inject constructor() {
     fun mapFromDTO(dto: StoryDTO): StoryEntity {
 
         return StoryEntity(
+            dto.id,
             dto.storyTitle,
             dto.storyTeaser,
             dto.storyImage,
-            dto.storyDate,
+            dto.storyDate.toLong(),
             dto.storySport.SportName,
             dto.storyAuthor
         )

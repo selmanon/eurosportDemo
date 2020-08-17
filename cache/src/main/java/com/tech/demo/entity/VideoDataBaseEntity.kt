@@ -6,11 +6,11 @@ import com.tech.demo.db.Constants
 
 @Entity(tableName = Constants.Videos.TABLE_NAME)
 data class VideoDataBaseEntity(
-    @PrimaryKey(autoGenerate = true)
-    var id: Int = 0,
+    @PrimaryKey
+    var id: Int,
     var title: String,
     var image: String,
-    var date: Double,
+    var date: Long,
     var sport: String,
     var url: String,
     var views: Long

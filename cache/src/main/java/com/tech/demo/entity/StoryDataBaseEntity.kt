@@ -6,12 +6,12 @@ import com.tech.demo.db.Constants
 
 @Entity(tableName = Constants.Stories.TABLE_NAME)
 data class StoryDataBaseEntity(
-    @PrimaryKey(autoGenerate = true)
-    var id: Int = 0,
+    @PrimaryKey
+    var id: Int,
     var title: String,
     var teaser: String,
     var image: String,
-    var date: Double,
+    var date: Long,
     var sport: String,
     var author:String
 )

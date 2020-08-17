@@ -10,10 +10,4 @@ interface INewsCache {
     fun getFromCache(): Observable<List<NewsEntity>>
 
     fun saveToCache(list: List<NewsEntity>): Completable
-
-    fun areNewsCached(): Single<Boolean>
-
-    fun setLastCacheTime(lastCache: Long): Completable
-
-    fun isCacheExpired(): Single<Boolean>
 }

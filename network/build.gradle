@@ -16,6 +16,11 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:2.6.2"
     implementation "com.squareup.retrofit2:adapter-rxjava2:2.6.2"
 
+    testImplementation("junit:junit:4.12")
+    testImplementation("com.nhaarman:mockito-kotlin:1.5.0")
+    testImplementation("org.assertj:assertj-core:3.8.0")
+    testImplementation("com.flextrade.jfixture:jfixture:2.7.0")
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

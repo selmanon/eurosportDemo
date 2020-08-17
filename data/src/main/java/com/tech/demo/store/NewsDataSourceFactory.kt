@@ -7,14 +7,15 @@ import javax.inject.Inject
 
 class NewsDataSourceFactory @Inject constructor(
     private val networkDataSource: NewsNetworkDataSource,
-    private val cacheDataSource: NewsCacheDataSource
+    private val cacheDataSource: NewsCacheDataSource,
+    private val connectionChecker: IConnectivityChecker
 ) {
 
-    fun getDataSource(isOffline: Boolean): INewsDataSource {
-        return if (!isOffline)
-            networkDataSource
-        else
+    fun getDataSource(): INewsDataSource {
+        return if (!connectionChecker.isConnected())
             cacheDataSource
+        else
+            networkDataSource
     }
 
     fun getCacheDataSource() = cacheDataSource

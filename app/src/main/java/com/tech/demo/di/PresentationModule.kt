@@ -2,8 +2,9 @@ package com.tech.demo.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.tech.demo.NewsViewModel
+import com.tech.demo.ConnectivityCheckerImpl
 import com.tech.demo.ViewModelFactory
+import com.tech.demo.store.IConnectivityChecker
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -25,6 +26,9 @@ abstract class PresentationModule {
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
+
+    @Binds
+    abstract fun bindConnectivityChecker(impl: ConnectivityCheckerImpl): IConnectivityChecker
 }
 
 @MustBeDocumented

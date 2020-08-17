@@ -52,7 +52,6 @@ class NewsViewModel @Inject constructor(
     }
 
 
-
     fun getNews() = allNews
 
     override fun onCleared() {

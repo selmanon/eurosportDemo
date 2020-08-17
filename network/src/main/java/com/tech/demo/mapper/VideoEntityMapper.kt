@@ -9,9 +9,10 @@ class VideoEntityMapper @Inject constructor() {
     fun mapFromDto(dto: VideoDTO): VideoEntity {
 
         return VideoEntity(
+            dto.id,
             dto.videoTitle,
             dto.videoImage,
-            dto.videoDate,
+            dto.videoDate.toLong(),
             dto.videoSport.SportName,
             dto.videoUrl,
             dto.videoViews
