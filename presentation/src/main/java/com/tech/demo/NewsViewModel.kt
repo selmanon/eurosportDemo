@@ -27,7 +27,7 @@ class NewsViewModel @Inject constructor(
         fetch()
     }
 
-    private var allNews: MutableLiveData<List<NewsModel>> = MutableLiveData()
+    private var allNews: MutableLiveData<Pair<String, List<NewsModel>?>> = MutableLiveData()
 
 
     fun fetch() {
@@ -36,7 +36,7 @@ class NewsViewModel @Inject constructor(
                 .subscribeOn(Schedulers.io())
                 .map {
                     it.map {
-                        when(it){
+                        when (it) {
                             is VideoDomain -> videoModelMapper.map(it)
                             is StoryDomain -> storyModelMapper.map(it)
                         }
@@ -44,9 +44,10 @@ class NewsViewModel @Inject constructor(
                 }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    allNews.postValue(it)
+                    allNews.postValue(Pair("Success", it))
                 }, {
                     Log.e("Error", it.toString())
+                    allNews.postValue(Pair("Error", null))
                 })
         )
     }

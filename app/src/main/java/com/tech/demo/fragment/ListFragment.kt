@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -14,6 +15,7 @@ import com.tech.demo.R
 import com.tech.demo.ViewModelFactory
 import com.tech.demo.adapter.NewsAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.list_news.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -40,9 +42,20 @@ class ListFragment : Fragment() {
         list.layoutManager = LinearLayoutManager(requireContext())
 
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(NewsViewModel::class.java)
+        progressBar.visibility = View.VISIBLE
         viewModel.getNews().observe(requireActivity(), Observer {
-            val adapter = NewsAdapter(requireContext(), it)
-            list.adapter = adapter
+            progressBar.visibility = View.GONE
+            when (it.first) {
+                "Success" -> {
+                    val adapter = NewsAdapter(requireContext(), it.second!!)
+                    list.adapter = adapter
+                }
+                "Error" -> Toast.makeText(
+                    requireContext(),
+                    "Oops something went wrong",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         })
     }
 }

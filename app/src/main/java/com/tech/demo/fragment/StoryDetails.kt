@@ -25,5 +25,9 @@ class StoryDetails : Fragment(R.layout.story_details) {
         Glide.with(view).load(bundle?.getString("image"))
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(view.findViewById<ImageView>(R.id.storyImage))
+
+        view.findViewById<ImageView>(R.id.backBtn).setOnClickListener {
+            requireActivity().finish()
+        }
     }
 }

@@ -30,8 +30,8 @@ object EuroSportApiServiceFactory {
 
     private fun makeOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
-            .connectTimeout(120, TimeUnit.SECONDS)
-            .readTimeout(120, TimeUnit.SECONDS)
+            .connectTimeout(9000, TimeUnit.MILLISECONDS)
+            .readTimeout(9000, TimeUnit.MILLISECONDS)
             .build()
     }
 }
